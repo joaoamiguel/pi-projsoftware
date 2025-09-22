@@ -21,7 +21,7 @@ import static org.assertj.core.api.Assertions.assertThat;
 public class CursoRepositoryTest {
 
     @Container
-    private static final MySQLContainer<?> mysqlContainer = new MySQLContainer<>("mysql:8.0")
+    static MySQLContainer<?> mysqlContainer = new MySQLContainer<>("mysql:8.0")
             .withDatabaseName("testdb")
             .withUsername("test")
             .withPassword("test");
@@ -34,6 +34,7 @@ public class CursoRepositoryTest {
         registry.add("spring.datasource.url", mysqlContainer::getJdbcUrl);
         registry.add("spring.datasource.username", mysqlContainer::getUsername);
         registry.add("spring.datasource.password", mysqlContainer::getPassword);
+        registry.add("spring.datasource.driver-class-name", mysqlContainer::getDriverClassName);
     }
 
     @BeforeEach
