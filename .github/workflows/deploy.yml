@@ -1,8 +1,5 @@
 name: Deploy AWS
 
-run: mvn clean install
-working-directory: ./
-
 on:
   push:
     branches: ["main"]
